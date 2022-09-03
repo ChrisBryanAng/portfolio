@@ -13,23 +13,27 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <div className="fixed flex px-[5%] h-24 w-full items-center justify-between">
-      <div className="flex gap-4">
+    <motion.div
+      initial={{ opacity: 0, y: '-100px' }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 2, duration: 0.5 }}
+      className="fixed flex px-[5%] h-36 w-full items-center justify-between font-bodoni"
+    >
+      <div className="flex gap-[108px]">
         {menus.map((menu: { label: string; route: string }, idx: number) => (
-          <p
-            key={idx}
-            className={`uppercase ${
-              router.route === menu.route ? 'border-b-2 border-black' : ''
-            }`}
-          >
+          <div key={idx} className="relative uppercase tracking-widest">
             <Link href={`${menu.route}`}>{menu.label}</Link>
-          </p>
+            {router.route === menu.route && (
+              <motion.div layoutId="border" className="border-b-2 border-black" />
+            )}
+          </div>
         ))}
       </div>
-      <div>
-        <p>Download CV</p>
+      <div className="flex gap-8">
+        <p className="tracking-widest">Testimonials</p>
+        <p className="tracking-widest">Download CV</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
