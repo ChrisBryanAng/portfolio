@@ -6,7 +6,7 @@ interface IProps {
   works: IWork[];
 }
 
-const work = ({ works }: IProps) => {
+const Work = ({ works }: IProps) => {
   return (
     <div className="flex min-h-screen">
       <div className="flex flex-wrap p-[10%_5%] h-screen w-[60%] items-center">
@@ -60,4 +60,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default work;
+export default Work;
