@@ -6,8 +6,6 @@ const HeroSvg = () => {
       <div className="inline-block relative overflow-hidden">
         <svg
           className="hidden md:inline-block h-[657px] md:w-[700px] lg:w-[900px] xl:w-[1300px] 2xl:w-[1644px] 4k:w-[1844px]"
-          // width="1644"
-          // height="657"
           preserveAspectRatio="xMidYMax meet"
           viewBox="0 0 1644 657"
           fill="none"
@@ -25,8 +23,6 @@ const HeroSvg = () => {
 
         <svg
           className="inline-block md:hidden w-[390px] h-[264px]"
-          // width="390"
-          // height="264"
           preserveAspectRatio="xMidYMax meet"
           viewBox="0 0 390 264"
           fill="none"
