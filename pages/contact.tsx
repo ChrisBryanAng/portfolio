@@ -1,6 +1,6 @@
 import React from 'react';
 
-const contact = () => {
+const Contact = () => {
   return (
     <div className="isolate relative h-screen w-screen overflow-hidden pointer-events-none">
       <div className="flex flex-col justify-center pl-[180px] h-full w-full">
@@ -10,4 +10,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
