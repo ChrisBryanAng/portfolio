@@ -74,9 +74,13 @@ const Navbar = () => {
       variants={variants}
       initial={router.route === '/about' ? 'initialInRoute' : 'initialNotInRoute'}
       animate={router.route === '/about' ? 'inRoute' : 'notInRoute'}
-      className="flex fixed px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-bodoni"
+      className="flex fixed px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-bodoni bg-white"
     >
-      <div className="hidden lg:flex gap-12 xl:gap-[108px]">
+      <div
+        className={`hidden lg:flex gap-12 xl:gap-[108px] ${
+          router.route === '/work' && 'font-semibold'
+        }`}
+      >
         {menus.map((menu: { label: string; route: string }, idx: number) => (
           <div key={idx} className="relative uppercase tracking-widest">
             <Link href={`${menu.route}`}>{menu.label}</Link>
@@ -86,7 +90,7 @@ const Navbar = () => {
           </div>
         ))}
       </div>
-      <div className="hidden lg:flex gap-8">
+      <div className={`hidden lg:flex gap-8 ${router.route === '/work' && 'font-semibold'}`}>
         <p className="tracking-widest">Testimonials</p>
         <p className="tracking-widest">Download CV</p>
       </div>

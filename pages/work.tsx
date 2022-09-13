@@ -1,43 +1,82 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useRef } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../utils/client';
 import { IWork } from '../types';
-import Image from 'next/image';
+import WorkModal from '../components/WorkModal';
 
 interface IProps {
   works: IWork[];
 }
 
 const Work = ({ works }: IProps) => {
+  const ref = useRef<any>();
+  const [selected, setSelected] = useState<any>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
+
   return (
-    <div className="flex min-h-screen">
-      <div className="flex flex-wrap p-[10%_5%] h-screen w-[60%] items-center">
+    <motion.div
+      exit={{ x: '100vw' }}
+      transition={{ duration: 1.5 }}
+      className="relative flex min-h-screen items-center justify-center pointer-events-none overflow-hidden"
+    >
+      <motion.div
+        initial={{ x: '100vw' }}
+        animate={{ x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="absolute inset-0 bg-white mix-blend-difference"
+      />
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
+        {isModalOpen && <WorkModal work={selected} toggleModal={toggleModal} />}
+      </AnimatePresence>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="relative flex flex-[1_1_44%] flex-wrap h-[520px] w-full mx-[5%] px-[11px] gap-8 overflow-y-auto overflow-x-hidden pointer-events-auto"
+      >
         {works?.map((work) => (
-          <div
-            key={work._id}
-            className="flex flex-col h-max w-[400px] shadow-lg rounded-lg divide-y-2 divide-gray-200 overflow-clip bg-white"
-          >
-            <div className="relative pb-4">
+          <div key={work._id} className="flex flex-shrink-0 flex-col h-max w-[400px]">
+            <motion.div
+              layoutId={`image-${work._id}`}
+              className="relative bg-gray-400 cursor-pointer"
+              onClick={() => {
+                setSelected(work);
+                toggleModal();
+              }}
+            >
               <Image
                 src={urlFor(work.imgUrl).url()}
                 layout="responsive"
+                priority
                 width={550}
-                height={400}
+                height={600}
                 objectFit="cover"
               />
-            </div>
-            <div className="flex flex-col gap-4 p-4">
-              <p className="font-semibold text-lg">
-                <a href={work.projectLink} target="_blank" rel="noopener noreferrer">
-                  {work.title}
-                </a>
-                .
-              </p>
-              <p className="text-gray-700">{work.description}</p>
-            </div>
+            </motion.div>
+            <p className="text-white text-[30px] font-cormorant uppercase p-4 text-center">
+              {work.title}
+            </p>
           </div>
         ))}
-        <p className="text-[45px] font-dancing">In progress... from Sanity.io</p>
-      </div>
-    </div>
+        <div className="flex flex-shrink-0 flex-col h-max w-[400px]">
+          <div className="relative bg-gray-400" onClick={() => console.log(selected)}>
+            <Image
+              src="/images/helping.jpg"
+              layout="responsive"
+              priority
+              width={550}
+              height={600}
+              objectFit="cover"
+            />
+          </div>
+          <p className="text-white text-[30px] font-cormorant uppercase p-4 text-center">TBD</p>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
