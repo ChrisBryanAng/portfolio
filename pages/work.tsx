@@ -36,44 +36,36 @@ const Work = ({ works }: IProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="relative flex flex-[1_1_44%] flex-wrap h-[520px] w-full mx-[5%] px-[11px] gap-8 overflow-y-auto overflow-x-hidden pointer-events-auto"
+        className={`relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-[500px] w-full justify-center md:mx-[5%] md:px-[11px] gap-8 overflow-y-auto overflow-x-hidden pointer-events-auto scrollbar-hide lg:scrollbar-default`}
       >
         {works?.map((work) => (
-          <div key={work._id} className="flex flex-shrink-0 flex-col h-max w-[400px]">
+          <div key={work._id} className="flex flex-shrink-0 flex-col items-center h-max w-full">
             <motion.div
               layoutId={`image-${work._id}`}
-              className="relative bg-gray-400 cursor-pointer"
+              className="relative h-[400px] w-[300px] cursor-pointer"
               onClick={() => {
                 setSelected(work);
                 toggleModal();
               }}
             >
-              <Image
-                src={urlFor(work.imgUrl).url()}
-                layout="responsive"
-                priority
-                width={550}
-                height={600}
-                objectFit="cover"
-              />
+              <Image src={urlFor(work.imgUrl).url()} layout="fill" priority objectFit="cover" />
             </motion.div>
-            <p className="text-white text-[30px] font-cormorant uppercase p-4 text-center">
+            <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">
               {work.title}
             </p>
           </div>
         ))}
-        <div className="flex flex-shrink-0 flex-col h-max w-[400px]">
-          <div className="relative bg-gray-400" onClick={() => console.log(selected)}>
-            <Image
-              src="/images/helping.jpg"
-              layout="responsive"
-              priority
-              width={550}
-              height={600}
-              objectFit="cover"
-            />
+        <div className="flex flex-shrink-0 flex-col items-center h-max w-full">
+          <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
+            <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
           </div>
-          <p className="text-white text-[30px] font-cormorant uppercase p-4 text-center">TBD</p>
+          <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">TBD</p>
+        </div>
+        <div className="flex flex-shrink-0 flex-col items-center h-max w-full">
+          <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
+            <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
+          </div>
+          <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">TBD</p>
         </div>
       </motion.div>
     </motion.div>

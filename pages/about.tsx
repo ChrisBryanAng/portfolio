@@ -78,7 +78,7 @@ const About = () => {
       <section className="flex h-[120vh] w-full overflow-hidden">
         <div className="relative flex flex-col gap-8 w-1/2 items-center justify-center pt-[10%] text-[18px] font-cormorant font-semibold uppercase">
           <p className="w-2/3">
-            chasing you goals and working hard for it is important, getting hobbies and taking a
+            chasing your goals and working hard for it is important, getting hobbies and taking a
             break once in a while isnt a bad thing either.
           </p>
           <p className="w-2/3">
