@@ -7,3 +7,7 @@ export interface IWork {
   githubLink: string;
   tags: string[];
 }
+
+export interface ISidebar {
+  toggleSidebar: () => void;
+}

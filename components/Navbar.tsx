@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, useScroll, useVelocity } from 'framer-motion';
+import { ISidebar } from '../types';
 
 const menus = [
   { label: 'Home', route: '/' },
@@ -10,8 +11,9 @@ const menus = [
   { label: 'Contact Me', route: '/contact' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }: ISidebar) => {
   const router = useRouter();
+  const [hovered, setHovered] = useState(router.route);
   const slideDistance = 100;
   const threshold = 1500;
 
@@ -74,19 +76,26 @@ const Navbar = () => {
       variants={variants}
       initial={router.route === '/about' ? 'initialInRoute' : 'initialNotInRoute'}
       animate={router.route === '/about' ? 'inRoute' : 'notInRoute'}
-      className="flex fixed px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-bodoni bg-white"
+      className="flex fixed px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-white"
     >
-      <div
-        className={`hidden lg:flex gap-12 xl:gap-[108px] ${
-          router.route === '/work' && 'font-semibold'
-        }`}
-      >
+      <div className={`hidden lg:flex ${router.route === '/work' && 'font-semibold'}`}>
         {menus.map((menu: { label: string; route: string }, idx: number) => (
-          <div key={idx} className="relative uppercase tracking-widest">
-            <Link href={`${menu.route}`}>{menu.label}</Link>
-            {router.route === menu.route && (
-              <motion.div layoutId="border" className="border-b-2 border-black" />
-            )}
+          <div
+            key={idx}
+            onMouseEnter={() => setHovered(menu.route)}
+            onMouseLeave={() => setHovered(router.route)}
+            className="px-8 xl:px-12"
+          >
+            <div className="relative uppercase tracking-widest py-1">
+              <Link href={`${menu.route}`}>{menu.label}</Link>
+              {(menu.route === hovered || menu.route === router.route) && (
+                <motion.div
+                  layoutId="border"
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0 border-b-2 border-black pointer-events-none"
+                />
+              )}
+            </div>
           </div>
         ))}
       </div>
@@ -94,7 +103,7 @@ const Navbar = () => {
         <p className="tracking-widest">Testimonials</p>
         <p className="tracking-widest">Download CV</p>
       </div>
-      <div className="inline-block lg:hidden">
+      <div className="inline-block lg:hidden cursor-pointer" onClick={toggleSidebar}>
         <svg
           width="36"
           height="23"

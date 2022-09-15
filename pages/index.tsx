@@ -27,7 +27,7 @@ const Home = () => {
           variants={pContainer}
           initial="hidden"
           animate="visible"
-          className="text-[30px] md:text-[45px] 2xl:text-[80px] font-semibold font-cantataOne"
+          className="text-[30px] md:text-[45px] lg:text-[50px] 2xl:text-[80px] font-semibold font-cantataOne"
         >
           {letters2.map((letter, index) => (
             <motion.span variants={pChild} key={index}>
