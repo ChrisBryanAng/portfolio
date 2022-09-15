@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Cantata+One&family=Cormorant:wght@300&family=Crimson+Pro:wght@200&family=Dancing+Script&family=Merienda&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Cantata+One&family=Cormorant:wght@300&family=Crimson+Pro:wght@200&family=Dancing+Script&family=Merienda&family=Poppins&display=swap"
           rel="stylesheet"
         ></link>
       </Head>

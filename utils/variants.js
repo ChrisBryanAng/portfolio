@@ -1,3 +1,4 @@
+/*Page transitions*/
 export const pageVariants = {
   initial: {
     opacity: 0,
@@ -7,5 +8,49 @@ export const pageVariants = {
   },
   exit: {
     opacity: 0,
+  },
+};
+
+/*Home Variants*/
+export const pContainer = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: i * 0.3 },
+  }),
+};
+
+export const pChild = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: 20,
+    transition: {
+      type: 'spring',
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+};
+
+export const extraText = {
+  hidden: {
+    opacity: 0,
+    x: '-100px',
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { delay: 2, duration: 0.5 },
   },
 };

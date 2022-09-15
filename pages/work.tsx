@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../utils/client';
@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const Work = ({ works }: IProps) => {
-  const ref = useRef<any>();
   const [selected, setSelected] = useState<any>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen((prev) => !prev);
@@ -32,11 +31,12 @@ const Work = ({ works }: IProps) => {
         {isModalOpen && <WorkModal work={selected} toggleModal={toggleModal} />}
       </AnimatePresence>
       <motion.div
-        ref={ref}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className={`relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-[500px] w-full justify-center md:mx-[5%] md:px-[11px] gap-8 overflow-y-auto overflow-x-hidden pointer-events-auto scrollbar-hide lg:scrollbar-default`}
+        className={`relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-[500px] w-full justify-center md:mx-[5%] md:px-[11px] gap-8 ${
+          isModalOpen ? 'overflow-hidden' : 'overflow-y-auto'
+        }  overflow-x-hidden pointer-events-auto scrollbar-hide lg:scrollbar-default`}
       >
         {works?.map((work) => (
           <div key={work._id} className="flex flex-shrink-0 flex-col items-center h-max w-full">
@@ -50,7 +50,7 @@ const Work = ({ works }: IProps) => {
             >
               <Image src={urlFor(work.imgUrl).url()} layout="fill" priority objectFit="cover" />
             </motion.div>
-            <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">
+            <p className="text-white text-[25px] font-poppins uppercase p-4 text-center">
               {work.title}
             </p>
           </div>
@@ -59,13 +59,13 @@ const Work = ({ works }: IProps) => {
           <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
             <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
           </div>
-          <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">TBD</p>
+          <p className="text-white text-[25px] font-poppins uppercase p-4 text-center">TBD</p>
         </div>
         <div className="flex flex-shrink-0 flex-col items-center h-max w-full">
           <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
             <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
           </div>
-          <p className="text-white text-[25px] font-cormorant uppercase p-4 text-center">TBD</p>
+          <p className="text-white text-[25px] font-poppins uppercase p-4 text-center">TBD</p>
         </div>
       </motion.div>
     </motion.div>
@@ -79,7 +79,8 @@ export const getServerSideProps = async () => {
     description,
     imgUrl,
     projectLink,
-    githubLink
+    githubLink,
+    tags
   }`;
 
   const works = await client.fetch(query);
