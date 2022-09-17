@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { client, urlFor } from '../utils/client';
 import { IWork } from '../types';
 import WorkModal from '../components/WorkModal';
+import { workVariants } from '../utils/variants';
 
 interface IProps {
   works: IWork[];
@@ -17,15 +18,14 @@ const Work = ({ works }: IProps) => {
 
   return (
     <motion.div
-      exit={{ x: '100vw' }}
-      transition={{ duration: 1.5 }}
+      variants={workVariants}
       className="relative flex min-h-screen items-center justify-center pointer-events-none overflow-hidden"
     >
       <motion.div
         initial={{ x: '100vw' }}
         animate={{ x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="absolute inset-0 bg-white mix-blend-difference"
+        className="absolute inset-0 z-10 bg-white mix-blend-difference"
       />
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {isModalOpen && <WorkModal work={selected} toggleModal={toggleModal} />}
@@ -34,7 +34,7 @@ const Work = ({ works }: IProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className={`relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-[500px] w-full justify-center md:mx-[5%] md:px-[11px] gap-8 ${
+        className={`relative z-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 h-[500px] w-full justify-center md:mx-[5%] md:px-[11px] gap-8 ${
           isModalOpen ? 'overflow-hidden' : 'overflow-y-auto'
         }  overflow-x-hidden pointer-events-auto scrollbar-hide lg:scrollbar-default`}
       >

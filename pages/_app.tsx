@@ -32,7 +32,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           initial="initial"
           animate="animate"
           exit="exit"
-          transition={{ duration: 0.5 }}
         >
           <Component {...pageProps} />
         </motion.main>

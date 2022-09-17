@@ -17,7 +17,7 @@ const WorkModal = ({ work, toggleModal }: IProps) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={toggleModal}
-      className="fixed z-10 inset-0 h-screen w-screen justify-center items-center bg-black/90 flex pointer-events-auto"
+      className="fixed z-30 inset-0 h-screen w-screen justify-center items-center bg-black/90 flex pointer-events-auto"
     >
       <motion.div
         onClick={(e) => e.stopPropagation()}

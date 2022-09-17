@@ -2,12 +2,21 @@
 export const pageVariants = {
   initial: {
     opacity: 0,
+    transition: {
+      duration: 0.4,
+    },
   },
   animate: {
     opacity: 1,
+    transition: {
+      duration: 0.4,
+    },
   },
   exit: {
     opacity: 0,
+    transition: {
+      duration: 0.4,
+    },
   },
 };
 
@@ -52,5 +61,21 @@ export const extraText = {
     opacity: 1,
     x: 0,
     transition: { delay: 2, duration: 0.5 },
+  },
+};
+
+/*Work Variants*/
+export const workVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    x: '100vw',
+    transition: {
+      duration: 1,
+    },
   },
 };

@@ -28,7 +28,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }: IProps) => {
           animate={{ x: 0 }}
           exit={{ x: '100vw' }}
           transition={{ duration: 0.6 }}
-          className="flex lg:hidden absolute z-10 justify-center items-center h-screen w-screen bg-white"
+          className="flex lg:hidden absolute z-50 justify-center items-center h-screen w-screen bg-white"
         >
           <div className="absolute right-7 top-7 cursor-pointer" onClick={toggleSidebar}>
             <AiOutlineClose className="h-7 w-7" />

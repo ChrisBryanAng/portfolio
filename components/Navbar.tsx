@@ -76,9 +76,13 @@ const Navbar = ({ toggleSidebar }: ISidebar) => {
       variants={variants}
       initial={router.route === '/about' ? 'initialInRoute' : 'initialNotInRoute'}
       animate={router.route === '/about' ? 'inRoute' : 'notInRoute'}
-      className="flex fixed px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-white"
+      className="flex fixed z-10 px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-transparent pointer-events-auto"
     >
-      <div className={`hidden lg:flex ${router.route === '/work' && 'font-semibold'}`}>
+      <div
+        className={`hidden lg:flex ${
+          (router.route === '/work' || router.route === '/contact') && 'font-semibold'
+        }`}
+      >
         {menus.map((menu: { label: string; route: string }, idx: number) => (
           <div
             key={idx}
