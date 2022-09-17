@@ -143,7 +143,11 @@ const Contact = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center justify-center self-end bg-white text-black w-9 h-9 rounded-full cursor-pointer"
               >
-                <a href="/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://linkedin.com/in/christopher-ang-59b059117"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <AiFillLinkedin className="h-7 w-7   rounded-full" />
                 </a>
               </motion.div>
@@ -152,7 +156,11 @@ const Contact = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center justify-center self-end bg-white text-black w-9 h-9 rounded-full cursor-pointer"
               >
-                <a href="/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/ChrisBryanAng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <AiOutlineGithub className="h-7 w-7" />
                 </a>
               </motion.div>

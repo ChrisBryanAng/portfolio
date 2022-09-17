@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const AboutSvg = () => {
   return (
-    <div className="absolute bottom-0 left-[25%] w-[544px] h-[804px]">
+    <div className="absolute bottom-0 right-[5%] flex items-end w-[335px] lg:w-[385px] xl:w-[434px] 2xl:w-[544px] h-full">
       <svg
         // width="544"
         // height="804"
