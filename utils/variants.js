@@ -1,4 +1,4 @@
-/*Page transitions*/
+/************************************************** Page transitions*/
 export const pageVariants = {
   initial: {
     opacity: 0,
@@ -20,7 +20,7 @@ export const pageVariants = {
   },
 };
 
-/*Home Variants*/
+/************************************************** Home Variants*/
 export const pContainer = {
   hidden: {
     opacity: 0,
@@ -64,7 +64,7 @@ export const extraText = {
   },
 };
 
-/*Work Variants*/
+/************************************************** Work Variants*/
 export const workVariants = {
   initial: {
     opacity: 0,
@@ -77,5 +77,55 @@ export const workVariants = {
     transition: {
       duration: 1,
     },
+  },
+};
+
+/************************************************** WorkModal variants */
+export const modalDescVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.4,
+    },
+  },
+};
+
+export const modalFieldVariants = {
+  initial: {
+    y: '50px',
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+/************************************************** About variants */
+export const aboutHobbiesVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  inView: {
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+export const hobbiesImageVariants = {
+  inView: {
+    opacity: [0, 1],
   },
 };

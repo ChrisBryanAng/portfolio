@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { urlFor } from '../utils/client';
 import { IWork } from '../types';
 import { AiOutlineClose, AiOutlineGithub, AiOutlineLink } from 'react-icons/ai';
+import { modalDescVariant, modalFieldVariants } from '../utils/variants';
 
 interface IProps {
   work: IWork;
@@ -19,7 +20,7 @@ const WorkModal = ({ work, toggleModal }: IProps) => {
       onClick={toggleModal}
       className="fixed z-30 inset-0 h-screen w-screen justify-center items-center bg-black/90 flex pointer-events-auto"
     >
-      <motion.div
+      <div
         onClick={(e) => e.stopPropagation()}
         className="relative flex flex-col xl:flex-row h-full md:mx-[5%] pt-[70px] xl:pt-0 rounded-lg overflow-y-auto scrollbar-hide"
       >
@@ -35,12 +36,15 @@ const WorkModal = ({ work, toggleModal }: IProps) => {
         >
           <Image src={urlFor(work.imgUrl).url()} layout="fill" objectFit="contain" />
         </motion.div>
-        <div className="flex flex-col gap-24 px-16 py-[5%] 2xl:py-[12%] h-full md:w-[700px] text-white overflow-y-visible xl:overflow-y-auto scrollbar-hide">
+        <motion.div
+          variants={modalDescVariant}
+          initial="initial"
+          animate="animate"
+          className="flex flex-col gap-24 px-16 py-[5%] 2xl:py-[12%] h-full md:w-[700px] text-white overflow-y-visible xl:overflow-y-auto scrollbar-hide"
+        >
           <div className="flex flex-col md:flex-row w-full justify-between">
             <motion.p
-              initial={{ y: '50px', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              variants={modalFieldVariants}
               className="rounded-lg md:px-8 w-max text-[30px] font-poppins font-semibold "
             >
               {work.title}
@@ -65,49 +69,34 @@ const WorkModal = ({ work, toggleModal }: IProps) => {
             </div>
           </div>
           <div className="flex flex-col md:px-8 py-4 w-full rounded-lg text-[25px] font-poppins">
-            <motion.p
-              initial={{ y: '50px', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="pb-2 font-semibold"
-            >
+            <motion.p variants={modalFieldVariants} className="pb-2 font-semibold">
               Technologies
             </motion.p>
 
-            <div className="flex flex-col pt-2 pl-10 md:pl-14 text-[19px] font-poppins">
+            <motion.div
+              variants={modalFieldVariants}
+              className="flex flex-col pt-2 pl-10 md:pl-14 text-[19px] font-poppins"
+            >
               {work.tags?.map((tag, idx) => (
-                <motion.p
-                  key={idx}
-                  initial={{ y: '50px', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1, delay: 1.5 }}
-                  className="w-max text-center"
-                >
+                <p key={idx} className="w-max text-center">
                   {tag}
-                </motion.p>
+                </p>
               ))}
-            </div>
+            </motion.div>
           </div>
           <div className=" rounded-lg md:px-8 py-4 text-[25px] font-poppins">
-            <motion.p
-              initial={{ y: '50px', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 2 }}
-              className="pb-2 font-semibold"
-            >
+            <motion.p variants={modalFieldVariants} className="pb-2 font-semibold">
               Description
             </motion.p>
             <motion.p
-              initial={{ y: '50px', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 2.5 }}
+              variants={modalFieldVariants}
               className="pl-10 md:pl-14 pt-2 text-[19px] w-[250px] md:w-full"
             >
               {work.description}
             </motion.p>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

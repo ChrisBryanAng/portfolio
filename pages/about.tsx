@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useScroll, useTransform, MotionValue, motion } from 'framer-motion';
 import AboutSvg from '../components/AboutSvg';
+import { aboutHobbiesVariants, hobbiesImageVariants } from '../utils/variants';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -97,32 +98,35 @@ const About = () => {
             My Hobbies
           </motion.p>
         </div>
-        <div className="hidden md:flex relative w-1/2">
+        <motion.div
+          variants={aboutHobbiesVariants}
+          initial="initial"
+          animate="animate"
+          whileInView="inView"
+          className="hidden md:flex relative w-1/2"
+        >
           <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            transition={{ duration: 0.5 }}
+            variants={hobbiesImageVariants}
             className="absolute top-0 left-0 w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
             style={{ y: yImage1 }}
           >
             <Image src="/images/helping.jpg" layout="fill" />
           </motion.div>
           <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute z-10 top-0 left-0  2xl:mt-[5%] ml-[25%] w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
+            variants={hobbiesImageVariants}
+            className="absolute z-10 top-0 left-0 2xl:mt-[5%] ml-[25%] w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
             style={{ y: yImage2 }}
           >
             <Image src="/images/game.jpg" layout="fill" />
           </motion.div>
           <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            transition={{ duration: 0.5, delay: 1 }}
+            variants={hobbiesImageVariants}
             className="absolute top-0 left-0 2xl:mt-[20%] ml-[50%] w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
             style={{ y: yImage3 }}
           >
             <Image src="/images/swimming.jpg" layout="fill" />
           </motion.div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
