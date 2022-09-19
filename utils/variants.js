@@ -129,3 +129,31 @@ export const hobbiesImageVariants = {
     opacity: [0, 1],
   },
 };
+
+export const aboutHeroVariant = {
+  initial: {
+    opacity: 0,
+    perspective: 1000,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delayChildren: 2,
+    },
+  },
+};
+
+export const aboutHeroChildVariant = {
+  initial: {
+    opacity: 0,
+    rotateX: '90deg',
+    originY: 1,
+  },
+  animate: {
+    opacity: 1,
+    rotateX: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};

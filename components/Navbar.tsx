@@ -43,7 +43,7 @@ const Navbar = ({ toggleSidebar }: ISidebar) => {
 
   useEffect(() => setIsInView(isScrollingBack || isAtTop), [isScrollingBack, isAtTop]);
 
-  const variants = {
+  const navbarVariants = {
     initialNotInRoute: {
       opacity: 0,
       y: '-100px',
@@ -73,7 +73,7 @@ const Navbar = ({ toggleSidebar }: ISidebar) => {
 
   return (
     <motion.div
-      variants={variants}
+      variants={navbarVariants}
       initial={router.route === '/about' ? 'initialInRoute' : 'initialNotInRoute'}
       animate={router.route === '/about' ? 'inRoute' : 'notInRoute'}
       className="flex fixed z-10 px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-transparent pointer-events-auto"

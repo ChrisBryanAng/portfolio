@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { useScroll, useTransform, MotionValue, motion } from 'framer-motion';
 import AboutSvg from '../components/AboutSvg';
-import { aboutHobbiesVariants, hobbiesImageVariants } from '../utils/variants';
+import { aboutHeroChildVariant, aboutHeroVariant, aboutHobbiesVariants } from '../utils/variants';
+import HobbyMotionImage from '../components/HobbyMotionImage';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -21,26 +22,29 @@ const About = () => {
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 1200]);
 
+  const hobbyImageProps = {
+    className:
+      'absolute top-0 left-0 w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]',
+  };
+
   return (
     <div className="isolate relative flex flex-col w-screen">
       <section className="relative flex h-screen w-full">
         <motion.div
-          initial={{ perspective: 1000 }}
-          className=" flex flex-col mt-[30%] md:mt-0 md:justify-center items-center w-full md:w-1/2 text-[60px] xl:text-[90px]"
+          variants={aboutHeroVariant}
+          initial="initial"
+          animate="animate"
+          className="flex flex-col mt-[30%] md:mt-0 md:justify-center items-center w-full md:w-1/2 text-[60px] xl:text-[90px]"
         >
           <motion.p
-            initial={{ opacity: 0, rotateX: '90deg', originY: 1 }}
-            animate={{ opacity: 1, rotateX: 0 }}
-            transition={{ duration: 1, delay: 2 }}
+            variants={aboutHeroChildVariant}
             className="font-cormorant w-max"
             style={{ x: x1, y: y1 }}
           >
             Front-End
           </motion.p>
           <motion.p
-            initial={{ opacity: 0, rotateX: '90deg', originY: 1 }}
-            animate={{ opacity: 1, rotateX: 0 }}
-            transition={{ duration: 1, delay: 2 }}
+            variants={aboutHeroChildVariant}
             className="text-[50px] xl:text-[90px] font-cormorant ml-0 md:ml-44 -mt-6 md:-mt-10"
             style={{ x: x2, y: y2 }}
           >
@@ -105,27 +109,21 @@ const About = () => {
           whileInView="inView"
           className="hidden md:flex relative w-1/2"
         >
-          <motion.div
-            variants={hobbiesImageVariants}
-            className="absolute top-0 left-0 w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
-            style={{ y: yImage1 }}
-          >
-            <Image src="/images/helping.jpg" layout="fill" />
-          </motion.div>
-          <motion.div
-            variants={hobbiesImageVariants}
-            className="absolute z-10 top-0 left-0 2xl:mt-[5%] ml-[25%] w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
-            style={{ y: yImage2 }}
-          >
-            <Image src="/images/game.jpg" layout="fill" />
-          </motion.div>
-          <motion.div
-            variants={hobbiesImageVariants}
-            className="absolute top-0 left-0 2xl:mt-[20%] ml-[50%] w-[180px] h-[250px] lg:w-[200px] lg:h-[300px] 2xl:w-[300px] 2xl:h-[400px]"
-            style={{ y: yImage3 }}
-          >
-            <Image src="/images/swimming.jpg" layout="fill" />
-          </motion.div>
+          <HobbyMotionImage
+            className={hobbyImageProps.className}
+            style={yImage1}
+            imgSrc="/images/helping.jpg"
+          />
+          <HobbyMotionImage
+            className={`${hobbyImageProps.className} z-10 2xl:mt-[5%] ml-[25%]`}
+            style={yImage2}
+            imgSrc="/images/game.jpg"
+          />
+          <HobbyMotionImage
+            className={`${hobbyImageProps.className} 2xl:mt-[20%] ml-[50%]`}
+            style={yImage3}
+            imgSrc="/images/swimming.jpg"
+          />
         </motion.div>
       </section>
     </div>
