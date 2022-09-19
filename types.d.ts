@@ -5,4 +5,9 @@ export interface IWork {
   imgUrl: string;
   projectLink: string;
   githubLink: string;
+  tags: string[];
+}
+
+export interface ISidebar {
+  toggleSidebar: () => void;
 }

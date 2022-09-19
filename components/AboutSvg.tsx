@@ -3,14 +3,8 @@ import { motion } from 'framer-motion';
 
 const AboutSvg = () => {
   return (
-    <div className="absolute bottom-0 left-[25%] w-[544px] h-[804px]">
-      <svg
-        // width="544"
-        // height="804"
-        viewBox="0 0 544 804"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+    <div className="absolute bottom-0 right-[5%] flex items-end w-[335px] lg:w-[385px] xl:w-[434px] 2xl:w-[544px] h-full">
+      <svg viewBox="0 0 544 804" fill="none" xmlns="http://www.w3.org/2000/svg">
         <motion.path
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}

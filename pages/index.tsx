@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { pContainer, pChild, extraText } from '../utils/variants';
 import HeroSvg from '../components/HeroSvg';
 
 const Home = () => {
@@ -6,49 +7,6 @@ const Home = () => {
   const text2 = "I'm Christopher Ang";
   const letters1 = Array.from(text1);
   const letters2 = Array.from(text2);
-
-  const pContainer = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: i * 0.3 },
-    }),
-  };
-
-  const pChild = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        damping: 12,
-        stiffness: 200,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        type: 'spring',
-        damping: 12,
-        stiffness: 200,
-      },
-    },
-  };
-
-  const extraText = {
-    hidden: {
-      opacity: 0,
-      x: '-100px',
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { delay: 2, duration: 0.5 },
-    },
-  };
 
   return (
     <div className="isolate relative h-screen w-screen overflow-hidden pointer-events-none">
@@ -69,7 +27,7 @@ const Home = () => {
           variants={pContainer}
           initial="hidden"
           animate="visible"
-          className="text-[30px] md:text-[45px] 2xl:text-[80px] font-semibold font-cantataOne"
+          className="text-[30px] md:text-[45px] lg:text-[50px] 2xl:text-[80px] font-semibold font-cantataOne"
         >
           {letters2.map((letter, index) => (
             <motion.span variants={pChild} key={index}>

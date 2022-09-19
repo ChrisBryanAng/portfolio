@@ -13,8 +13,9 @@ module.exports = {
         cormorant: "'Cormorant', serif",
         merienda: "'Merienda', cursive",
         crimsonPro: "'Crimson Pro', serif",
+        poppins: "'Poppins', sans-serif",
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };
