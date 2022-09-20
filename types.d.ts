@@ -11,3 +11,11 @@ export interface IWork {
 export interface ISidebar {
   toggleSidebar: () => void;
 }
+
+export interface ITestimonial {
+  _id: string;
+  name: string;
+  company: string;
+  imageurl: string;
+  message: string;
+}

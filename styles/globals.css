@@ -9,7 +9,8 @@
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
+  height: 9px;
+  width: 9px;
 }
 
 *::-webkit-scrollbar-track {

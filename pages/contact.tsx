@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { BsArrowRight } from 'react-icons/bs';
 import { AiFillLinkedin, AiOutlineGithub } from 'react-icons/ai';

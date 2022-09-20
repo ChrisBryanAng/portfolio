@@ -3,12 +3,18 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, useScroll, useVelocity } from 'framer-motion';
 import { ISidebar } from '../types';
+import NavbarMenu from './NavbarMenu';
 
 const menus = [
   { label: 'Home', route: '/' },
   { label: 'About', route: '/about' },
   { label: 'Work', route: '/work' },
   { label: 'Contact Me', route: '/contact' },
+];
+
+const menus2 = [
+  { label: 'Testimonial', route: '/testimonials' },
+  { label: 'CV', route: '/download_cv' },
 ];
 
 const Navbar = ({ toggleSidebar }: ISidebar) => {
@@ -76,36 +82,17 @@ const Navbar = ({ toggleSidebar }: ISidebar) => {
       variants={navbarVariants}
       initial={router.route === '/about' ? 'initialInRoute' : 'initialNotInRoute'}
       animate={router.route === '/about' ? 'inRoute' : 'notInRoute'}
-      className="flex fixed z-10 px-[5%] 4k:px-[15%] h-20 md:h-24 lg:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-transparent pointer-events-auto"
+      className="flex fixed z-10 px-[5%] 4k:px-[15%] h-20 md:h-24 2xl:h-36 w-full items-center justify-end lg:justify-between font-poppins text-sm xl:text-base bg-transparent pointer-events-auto"
     >
       <div
-        className={`hidden lg:flex ${
+        className={`hidden lg:flex uppercase ${
           (router.route === '/work' || router.route === '/contact') && 'font-semibold'
         }`}
       >
-        {menus.map((menu: { label: string; route: string }, idx: number) => (
-          <div
-            key={idx}
-            onMouseEnter={() => setHovered(menu.route)}
-            onMouseLeave={() => setHovered(router.route)}
-            className="px-8 xl:px-12"
-          >
-            <div className="relative uppercase tracking-widest py-1">
-              <Link href={`${menu.route}`}>{menu.label}</Link>
-              {(menu.route === hovered || menu.route === router.route) && (
-                <motion.div
-                  layoutId="border"
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 border-b-2 border-black pointer-events-none"
-                />
-              )}
-            </div>
-          </div>
-        ))}
+        <NavbarMenu menus={menus} hovered={hovered} setHovered={setHovered} />
       </div>
-      <div className={`hidden lg:flex gap-8 ${router.route === '/work' && 'font-semibold'}`}>
-        <p className="tracking-widest">Testimonials</p>
-        <p className="tracking-widest">Download CV</p>
+      <div className={`hidden lg:flex ${router.route === '/work' && 'font-semibold'}`}>
+        <NavbarMenu menus={menus2} hovered={hovered} setHovered={setHovered} />
       </div>
       <div className="inline-block lg:hidden cursor-pointer" onClick={toggleSidebar}>
         <svg
