@@ -1,18 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { pageVariants } from '../utils/variants';
+import NProgress from 'nprogress';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 
 import '../styles/globals.css';
+import 'nprogress/nprogress.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+
+  useEffect(() => {
+    const handleStart = () => {
+      NProgress.start();
+    };
+
+    const handleStop = () => {
+      NProgress.done();
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleStop);
+    router.events.on('routeChangeError', handleStop);
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleStop);
+      router.events.off('routeChangeError', handleStop);
+    };
+  }, [router]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white">

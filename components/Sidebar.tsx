@@ -9,6 +9,8 @@ const menus = [
   { label: 'About', route: '/about' },
   { label: 'Work', route: '/work' },
   { label: 'Contact', route: '/contact' },
+  { label: 'Testimonials', route: '/testimonials' },
+  { label: 'CV', route: '/download_cv' },
 ];
 
 interface IProps {

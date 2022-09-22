@@ -157,3 +157,60 @@ export const aboutHeroChildVariant = {
     },
   },
 };
+
+/************************************************** Testimonials variants */
+export const testContainerVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      when: 'beforeChildren',
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+export const testTitleVariant = {
+  initial: {
+    y: '-50px',
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+export const testCardContainerVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      when: 'beforeChildren',
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+export const testCardVariant = {
+  initial: {
+    y: '-50px',
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+    },
+  },
+};
