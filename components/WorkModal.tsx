@@ -64,7 +64,9 @@ const WorkModal = ({ work, toggleModal }: IProps) => {
                 transition={{ duration: 0.2 }}
                 className="flex p-1 items-center justify-center rounded-full bg-white text-black w-9 h-9 cursor-pointer"
               >
-                <AiOutlineGithub className="h-7 w-7" />
+                <a href={work.githubLink} target="_blank" rel="noopener noreferrer">
+                  <AiOutlineGithub className="h-7 w-7" />
+                </a>
               </motion.div>
             </div>
           </div>

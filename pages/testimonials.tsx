@@ -10,7 +10,7 @@ import {
   testContainerVariant,
   testTitleVariant,
 } from '../utils/variants';
-import TestimonialForm from '../components/TestimonialForm';
+// import TestimonialForm from '../components/TestimonialForm';
 
 interface IProps {
   testimonials: ITestimonial[];
@@ -79,9 +79,9 @@ const Testimonials = ({ testimonials }: IProps) => {
           ))}
         </motion.div>
       </motion.div>
-      <div className="flex justify-center items-center h-screen w-screen mt-[5%]">
+      {/* <div className="flex justify-center items-center h-screen w-screen mt-[5%]">
         <TestimonialForm />
-      </div>
+      </div> */}
     </div>
   );
 };

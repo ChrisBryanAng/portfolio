@@ -55,18 +55,6 @@ const Work = ({ works }: IProps) => {
             </p>
           </div>
         ))}
-        <div className="flex flex-shrink-0 flex-col items-center h-max w-full">
-          <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
-            <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
-          </div>
-          <p className="text-white text-[25px] font-poppins uppercase p-4 text-center">TBD</p>
-        </div>
-        <div className="flex flex-shrink-0 flex-col items-center h-max w-full">
-          <div className="relative h-[400px] w-[300px]" onClick={() => console.log(selected)}>
-            <Image src="/images/helping.jpg" layout="fill" priority objectFit="contain" />
-          </div>
-          <p className="text-white text-[25px] font-poppins uppercase p-4 text-center">TBD</p>
-        </div>
       </motion.div>
     </motion.div>
   );

@@ -7,6 +7,7 @@ interface IProps {
   cvImage: {
     _id: string;
     imageurl: string;
+    cvURL: string;
   }[];
 }
 
@@ -24,9 +25,12 @@ const Download_cv = ({ cvImage }: IProps) => {
         </div>
       </div>
       <div className="flex items-center justify-center h-full w-1/2 gap-4 font-cantataOne">
-        <p className="text-2xl">
-          Download <br /> (In Progress)
-        </p>
+        <a
+          href={`${cvImage[0].cvURL}?dl=ChristopherAng_CV.pdf`}
+          className="text-2xl hover:underline"
+        >
+          Download PDF
+        </a>
         <VscDesktopDownload className="h-10 w-10" />
       </div>
     </div>
@@ -38,8 +42,9 @@ export default Download_cv;
 export const getServerSideProps = async () => {
   const query = `*[_type == 'cv'] {
     _id,
-    imageurl
-  }`;
+    imageurl,
+    "cvURL": cvfile.asset->url
+}`;
 
   const cvImage = await client.fetch(query);
 

@@ -11,5 +11,10 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'cvfile',
+      title: 'CVPdf',
+      type: 'file',
+    },
   ],
 };
