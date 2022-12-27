@@ -14,7 +14,7 @@ const menus = [
 
 const menus2 = [
   { label: 'Testimonial', route: '/testimonials' },
-  { label: 'CV', route: '/download_cv' },
+  { label: 'Resume', route: '/download_cv' },
 ];
 
 const Navbar = ({ toggleSidebar }: ISidebar) => {
